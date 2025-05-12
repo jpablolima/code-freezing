@@ -1,5 +1,5 @@
 ---
- glass_breaker_group:
+ bypass_group:
   - jpablolima
 
  freezing_dates:
@@ -10,7 +10,7 @@
      from: 2025-12-23
      to: 2025-12-26
 
-     
+
 
 
 
