@@ -1,12 +1,28 @@
+import sys
 import yaml
 
+CONFIG_FILE = "config.yml"
 
-with open("config.yml") as f:
-    config = yaml.safe_load(f)
-    bypass_group = config["bypass_group"]
-    freezing_dates = config["freezing_dates"]
+def get_config(filename:str) -> dict:
+    with open("config.yml") as f:
+        return yaml.safe_load(f)
+    
 
-    for period, date in freezing_dates.items():
-        print(f"{period} goes from {date["from"]} unit {date["to"]}")
+def upack_config(config:dict) -> tuple:
+    try:
+        bypass_group = config["bypass_group"]
+        freezing_dates = config["freezing_dates"]
+    except KeyError:
+        print(f"One  of the fields are not present: ' bypass_group' of 'freezing_dates' on config file{CONFIG_FILE}")
+        sys.exit(1)
+    return(bypass_group, freezing_dates)
+
+def main():
+    config = get_config(CONFIG_FILE)
+    bypass_group, freezing_dates = upack_config(config)
+
+    print(bypass_group)
 
 
+if __name__== "__main__":
+    main()  
