@@ -1,3 +1,4 @@
+import datetime
 import logging
 import os 
 import sys
@@ -31,6 +32,12 @@ def upack_config(config:dict) -> tuple:
 def is_user_in_bypass_group(username: str, bypass_group: list) -> bool:
     return username in bypass_group
 
+def is_today_within_freezing_date(date_from:datetime.date, date_to: datetime.date) -> bool:
+    date_today = datetime.date.today()
+    # print(date_today)
+    return date_from <= date_today <= date_to
+   
+
 
 def main():
     config = get_config(CONFIG_FILE)
@@ -39,10 +46,12 @@ def main():
     if is_user_in_bypass_group(GITLAB_USER_LOGIN, bypass_group):
         logging.info(f"{GITLAB_USER_LOGIN} is in bypass group, exitting")
         sys.exit(0)
+    else:
+        for period, date in freezing_dates.items():
+            date_from = date.get("from")
+            date_to  = date.get("to")
+            logging.info(f"Validating {period} that goes from {date_from} to {date_to}")
+            
     
-
-
-
-
 if __name__== "__main__":
     main()  
