@@ -30,7 +30,9 @@ def upack_config(config:dict) -> tuple:
     return(bypass_group, freezing_dates)
 
 def is_user_in_bypass_group(username: str, bypass_group: list) -> bool:
+    print(bypass_group)
     return username in bypass_group
+    
 
 def is_today_within_freezing_date(date_from:datetime.date, date_to: datetime.date) -> bool:
     date_today = datetime.date.today()
