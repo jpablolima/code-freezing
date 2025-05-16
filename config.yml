@@ -1,6 +1,6 @@
 ---
  bypass_group:
-  - jpablolima
+  - root
 
  freezing_dates:
   End of the Year:
