@@ -1,10 +1,10 @@
 ---
  bypass_group:
-  - root
+  - jpablolima
 
  freezing_dates:
   End of the Year:
-    from: 2025-05-15
+    from: 2025-05-10
     to: 2025-05-20
   Christmas 2025:
      from: 2025-05-21
